@@ -24,6 +24,8 @@ type
     btn_novo: TButton;
     btn_proximo: TButton;
     btn_anterior: TButton;
+    btn_excluir: TButton;
+    btn_editar: TButton;
     procedure btn_conectarClick(Sender: TObject);
     procedure associaCampos;
     procedure atualizaCampos;
@@ -32,6 +34,8 @@ type
     procedure limpaCampos;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
+    procedure btn_proximoClick(Sender: TObject);
+    procedure btn_anteriorClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +67,12 @@ begin
   txt_email.Text :=  dm.tb_contato.FieldByName('email').Value;
   txt_telefone.Text :=  dm.tb_contato.FieldByName('telefone').Value;
   memo_obs.Text :=  dm.tb_contato.FieldByName('observacoes').Value;
+end;
+
+procedure Tfrm_contatos.btn_anteriorClick(Sender: TObject);
+begin
+  dm.tb_contato.Prior;
+  atualizaCampos;
 end;
 
 procedure Tfrm_contatos.btn_conectarClick(Sender: TObject);
@@ -98,6 +108,12 @@ begin
   btn_salvar.Enabled := true;
 end;
 
+procedure Tfrm_contatos.btn_proximoClick(Sender: TObject);
+begin
+  dm.tb_contato.Next;
+  atualizaCampos;
+end;
+
 procedure Tfrm_contatos.btn_salvarClick(Sender: TObject);
 begin
   associaCampos;
@@ -130,6 +146,7 @@ begin
   txt_nome.Text := '';
   txt_email.Text := '';
   txt_telefone.Text := '';
+  memo_obs.Text := '';
 end;
 
 end.

@@ -24,6 +24,8 @@ type
     btn_novo: TButton;
     btn_proximo: TButton;
     btn_anterior: TButton;
+    btn_excluir: TButton;
+    btn_editar: TButton;
     procedure btn_conectarClick(Sender: TObject);
     procedure associaCampos;
     procedure atualizaCampos;
@@ -34,6 +36,7 @@ type
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_proximoClick(Sender: TObject);
     procedure btn_anteriorClick(Sender: TObject);
+    procedure btn_editarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,6 +86,8 @@ begin
     lb_status.Caption := 'Conectado';
     btn_novo.Enabled := true;
     btn_conectar.Enabled := false;
+    btn_editar.Enabled := true;
+    btn_excluir.Enabled := true;
   end
   else
   begin
@@ -90,6 +95,14 @@ begin
   end;
 
   atualizaCampos;
+end;
+
+procedure Tfrm_contatos.btn_editarClick(Sender: TObject);
+begin
+  habilitaCampos;
+  btn_salvar.Enabled := true;
+  dm.tb_contato.Edit;
+  associaCampos;
 end;
 
 procedure Tfrm_contatos.btn_novoClick(Sender: TObject);

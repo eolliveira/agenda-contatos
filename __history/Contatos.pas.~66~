@@ -32,6 +32,8 @@ type
     procedure limpaCampos;
     procedure btn_novoClick(Sender: TObject);
     procedure btn_salvarClick(Sender: TObject);
+    procedure btn_proximoClick(Sender: TObject);
+    procedure btn_anteriorClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,6 +67,12 @@ begin
   memo_obs.Text :=  dm.tb_contato.FieldByName('observacoes').Value;
 end;
 
+procedure Tfrm_contatos.btn_anteriorClick(Sender: TObject);
+begin
+  dm.tb_contato.Prior;
+  atualizaCampos;
+end;
+
 procedure Tfrm_contatos.btn_conectarClick(Sender: TObject);
 begin
   dm.FDConnection1.Connected := True;
@@ -96,6 +104,12 @@ begin
 
   btn_novo.Enabled := false;
   btn_salvar.Enabled := true;
+end;
+
+procedure Tfrm_contatos.btn_proximoClick(Sender: TObject);
+begin
+  dm.tb_contato.Next;
+  atualizaCampos;
 end;
 
 procedure Tfrm_contatos.btn_salvarClick(Sender: TObject);
